@@ -103,6 +103,9 @@ export default function App() {
   // Section visible details toggle (e.g. what's included details)
   const [showDetailCoverage, setShowDetailCoverage] = useState(false);
 
+  // Disclaimer popup state
+  const [showDisclaimer, setShowDisclaimer] = useState(true);
+
   // Success Modal State
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [submittedData, setSubmittedData] = useState<LeadFormState | null>(null);
@@ -1321,6 +1324,55 @@ export default function App() {
                 className="w-full bg-[#0077B6] text-white font-extrabold text-xs py-3 rounded-xl cursor-pointer hover:bg-[#005f91]"
               >
                 혜택 적용 및 안심 닫기
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* --- Elegant Sample Disclaimer Initial Popup --- */}
+      {showDisclaimer && (
+        <div id="disclaimer-overlay" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/25 backdrop-blur-xs transition-opacity duration-300">
+          <div id="disclaimer-card" className="bg-white rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl border-4 border-[#0077B6] p-8 text-center relative max-h-[90vh] flex flex-col justify-between animate-slideup">
+            
+            {/* Absolute visual touch badges */}
+            <div className="absolute top-0 right-0 bg-[#0077B6] text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest">
+              NOTICE
+            </div>
+
+            <div className="flex-1 overflow-y-auto">
+              <div className="w-16 h-16 bg-[#F0F9FB] rounded-full flex items-center justify-center mx-auto mb-6 text-[#0077B6] shadow-inner">
+                <Sparkles className="w-8 h-8 text-[#0077B6] animate-pulse" />
+              </div>
+
+              {/* Huge beautiful main header statement */}
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0077B6] tracking-tight leading-tight mb-5 px-1">
+                This site is a basic type sample_01 website..
+              </h2>
+
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-[#00B4D8] mb-6">
+                본 웹사이트는 기본형 샘플 디자인 모델입니다.
+              </p>
+
+              {/* Informative list panel */}
+              <div className="bg-[#F0F9FB] p-4.5 rounded-2xl border border-[#E6EFF2] text-left text-xs text-slate-500 leading-relaxed mb-6 space-y-2">
+                <span className="block text-[11px] text-[#0077B6] font-black uppercase tracking-wider mb-1">
+                  💡 안내 사항 (Please Read)
+                </span>
+                <p>• 이 웹페이지는 실제 청소 예약 수집이나 요금 지불, 청약 처리를 개시하지 않는 전형적인 <strong>레이아웃 데모용 샘플 사이트</strong>입니다.</p>
+                <p>• 일부 문구 및 기능 구성품들은 시연 및 스타일 퀄리티를 위해 탑재되었습니다.</p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-100">
+              <button
+                id="btn-disclaimer-close"
+                onClick={() => setShowDisclaimer(false)}
+                className="w-full bg-gradient-to-r from-[#0077B6] to-[#00B4D8] text-white font-extrabold text-base py-4 rounded-2xl cursor-pointer shadow-md shadow-[#00B4D8]/20 hover:opacity-95 transition-all text-center flex items-center justify-center gap-1.5"
+              >
+                <span>내용을 확인했으며, 사이트 구경하기</span>
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
